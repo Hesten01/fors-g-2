@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int controle(int taske, int motor) {
+  if (motor / taske <= 5.6)
+    return 1;
+  else
+    return 0;
+}
+int main() {
+  int taske = 2;
+  float motor;
+
+  printf("hvor mange motoerer er der?");
+  scanf("%d", &taske);
+  printf("hvor mange tasker er der?");
+  scanf("%f", &motor);
+  printf("%d\n", controle(taske, motor));
+
+  if (controle(taske, motor))
+    printf("ja den kan godt holden\n");
+  else
+    printf("nej den kan ikke holde\n");
+}
