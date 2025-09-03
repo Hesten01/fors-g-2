@@ -1,31 +1,23 @@
 #include <stdio.h>
 
-int Control(int altitude) {
-  int thruster = 0;
-  if (altitude > 100) {
-    thruster = 0;
-  } else if (altitude > 0) {
-    thruster = 1;
-  } else {
-    thruster = 0;
-  }
-  return thruster;
+int controle(int taske, int motor) {
+  if (motor / taske <= 5.6)
+    return 1;
+  else
+    return 0;
 }
+int main() {
+  int taske = 2;
+  float motor;
 
-void Test(int altitude) {
-  int thruster = Control(altitude);
-  int behaviorCorrect = (altitude > 100 && thruster == 0) ||
-                        (altitude <= 100 && altitude > 0 && thruster == 1) ||
-                        (altitude <= 0 && thruster == 0);
-  char *behaviorCorrectIcon = behaviorCorrect ? "✅" : "❌";
-  printf("For altitude %3d, your thruster is %d |%s|\n", altitude, thruster,
-         behaviorCorrectIcon);
-}
+  printf("hvor mange motoerer er der?");
+  scanf("%d", &taske);
+  printf("hvor mange tasker er der?");
+  scanf("%f", &motor);
+  printf("%d\n", controle(taske, motor));
 
-int main(void) {
-  Test(150);
-  Test(100);
-  Test(50);
-  Test(0);
-  Test(-1);
+  if (controle(taske, motor))
+    printf("ja den kan godt holden\n");
+  else
+    printf("nej den kan ikke holde\n");
 }
